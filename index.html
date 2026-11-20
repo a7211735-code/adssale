@@ -19,6 +19,7 @@
   --amber:#755A38; --amber-soft:#EDE3D5;
   --teal:#4C6559; --teal-soft:#DDE6DF;
   --violet:#5F6285; --violet-soft:#E0E1EA;
+  --slate:#4D6070; --slate-soft:#DEE4E8;
   --on:#FFFFFF; --shadow:0 8px 24px rgba(90,78,76,.08);
   --accent:var(--rose); --soft:var(--rose-soft); --good:var(--teal); --good-soft:var(--teal-soft);
   --round:"Huninn","jf-openhuninn-2.0","jf open 粉圓","Yuanti TC","圓體-繁","PingFang TC","Microsoft JhengHei",sans-serif;
@@ -26,18 +27,19 @@
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#232022; --surface:#2F2B2D; --ink:#EFE9E6; --muted:#BDB4B1; --line:#443E40;
   --rose:#D9AEB6; --rose-soft:#4A3A3E; --amber:#D6BE9C; --amber-soft:#483E31;
-  --teal:#A9C6B6; --teal-soft:#35443C; --violet:#B4B6D4; --violet-soft:#3A3B4C;
+  --teal:#A9C6B6; --teal-soft:#35443C; --violet:#B4B6D4; --violet-soft:#3A3B4C; --slate:#A8BCCB; --slate-soft:#33404A;
   --on:#2A2527; --shadow:none; color-scheme:dark;
 }}
 :root[data-theme="dark"]{
   --bg:#232022; --surface:#2F2B2D; --ink:#EFE9E6; --muted:#BDB4B1; --line:#443E40;
   --rose:#D9AEB6; --rose-soft:#4A3A3E; --amber:#D6BE9C; --amber-soft:#483E31;
-  --teal:#A9C6B6; --teal-soft:#35443C; --violet:#B4B6D4; --violet-soft:#3A3B4C;
+  --teal:#A9C6B6; --teal-soft:#35443C; --violet:#B4B6D4; --violet-soft:#3A3B4C; --slate:#A8BCCB; --slate-soft:#33404A;
   --on:#2A2527; --shadow:none; color-scheme:dark;
 }
 body[data-view="daily"],.c-amber{--accent:var(--amber);--soft:var(--amber-soft)}
 body[data-view="sales"],.c-teal{--accent:var(--teal);--soft:var(--teal-soft)}
 body[data-view="myths"],.c-violet{--accent:var(--violet);--soft:var(--violet-soft)}
+body[data-view="people"],.c-slate{--accent:var(--slate);--soft:var(--slate-soft)}
 .c-rose{--accent:var(--rose);--soft:var(--rose-soft)}
 body[data-view="sales"] .ex:not(.good){--accent:var(--rose);--soft:var(--rose-soft)}
 
@@ -53,7 +55,7 @@ h1,h2{text-wrap:balance;line-height:1.35}
 .top{position:sticky;top:0;z-index:5;background:var(--bg)}
 .top-in{max-width:860px;margin:auto;padding:10px 16px}
 .brand{display:inline-block;font-size:17px;font-weight:700;color:var(--accent);margin:0 0 6px 4px}
-.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:5px;background:var(--surface);border-radius:99px;box-shadow:var(--shadow)}
+.tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding:5px;background:var(--surface);border-radius:99px;box-shadow:var(--shadow)}
 .tabs a{padding:6px 2px;text-align:center;font-size:15px;color:var(--muted);border-radius:99px}
 .tabs a[aria-current="page"]{background:var(--accent);color:var(--on)}
 
@@ -112,6 +114,23 @@ main{max-width:860px;margin:auto;padding:10px 16px 72px}
 .msg.them{justify-self:start;background:var(--bg);border:1px solid var(--line);border-bottom-left-radius:5px}
 .msg.me{justify-self:end;background:var(--accent);color:var(--on);border-bottom-right-radius:5px}
 .msg em{display:block;font-style:normal;font-size:12.5px;opacity:.85}
+.rad{display:block;width:100%;max-width:480px;margin:auto;font-family:var(--round)}
+.r-ln{stroke:var(--line);stroke-width:2}
+.r-ring{fill:none;stroke:var(--line);stroke-dasharray:4 6}
+.r-ctr{fill:var(--accent)}
+.r-ct{fill:var(--on);font-size:24px;font-weight:700}
+.r-node circle{fill:var(--soft);stroke:var(--accent);stroke-width:2}
+.r-nt{fill:var(--accent);font-size:16.5px}
+.r-out rect{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+.r-ot{fill:var(--ink);font-size:15px}
+.r-node[data-gi]{cursor:pointer}
+.r-node.on circle{fill:var(--accent)}.r-node.on .r-nt{fill:var(--on)}
+.r-out.on rect{stroke:var(--accent);stroke-width:2.5}
+.r-node:focus-visible{outline:none}.r-node:focus-visible circle{stroke-width:4}
+.card.sel{outline:2.5px solid var(--accent)}
+.rad.dim .r-ctr{fill:var(--muted)}.rad.dim .r-node circle{fill:var(--bg);stroke:var(--muted)}.rad.dim .r-nt{fill:var(--muted)}
+.cap{text-align:center;color:var(--muted);font-size:15px;margin-top:4px}
+.note{margin-top:12px;font-size:14px;color:var(--muted)}
 .tip{display:grid;gap:4px;margin-top:12px;padding:14px 17px;border:2px dashed var(--accent);border-radius:20px}
 .new{flex:none;align-self:center;margin-left:auto;padding:0 10px;border-radius:99px;font-size:12.5px;font-weight:400;background:var(--soft);color:var(--accent);white-space:nowrap}
 .ex{margin-top:14px;padding:14px 17px;background:var(--soft);border-radius:20px 20px 20px 6px}
@@ -138,7 +157,7 @@ dialog::backdrop{background:rgba(50,44,44,.62)}
 #pText p:first-child{font-weight:700;color:var(--accent)}
 .d-nav{display:flex;justify-content:space-between;gap:8px}
 [hidden]{display:none!important}
-@media (max-width:420px){.tabs a{font-size:14px}.hero{padding:28px 22px}.card{padding:19px}}
+@media (max-width:420px){.tabs a{font-size:13px;letter-spacing:0}.hero{padding:28px 22px}.card{padding:19px}}
 </style>
 </head>
 <body>
@@ -149,6 +168,7 @@ dialog::backdrop{background:rgba(50,44,44,.62)}
     <a href="#daily" data-go="daily">一般文案</a>
     <a href="#sales" data-go="sales">銷售秘訣</a>
     <a href="#myths" data-go="myths">文案迷思</a>
+    <a href="#people" data-go="people">族群痛點</a>
   </nav>
 </div></header>
 <main id="app"></main>
@@ -175,7 +195,7 @@ const K=[
 `如果不會飲食不知道怎麼搭配調整完全不用擔心！！
 我們有專業營養師打造的纖體班，都是有通過國考的營養師！直接教你怎麼正確吃
 就算未來沒使用產品也可以維持很好唷`]},
-{id:"cocoa",n:"可可奶",s:[
+{id:"cocoa",n:"可可奶茶",s:[
 `補充關鍵營養素在整個孕期分別什麼好處
 ①備孕期間：足夠營養胚胎會更健康✅ 提高受孕機率✅ 降低胎兒發育異常問題✅
 ②孕期中補充：避免孕吐不適營養不足✅ 胎兒發育必須營養充足✅ 預防孕期併發✅ 降低孕期疲勞✅
@@ -486,6 +506,7 @@ ${rings(false,"home-rings")}
 <a class="topic c-amber" href="#daily" data-go="daily"><i>${D.length} 類</i><b>一般類型限動文案</b><span>日常、價值觀、故事、互動、事業、情緒共鳴</span></a>
 <a class="topic c-teal" href="#sales" data-go="sales"><i>${S.length} 原則</i><b>銷售秘訣攻略</b><span>底層原理、對話範例、成交流程、發文前自查</span></a>
 <a class="topic c-violet" href="#myths" data-go="myths"><i>${M.length} 迷思</i><b>文案常見迷思調整</b><span>客人為什麼不買單，文案可以怎麼改</span></a>
+<a class="topic c-slate" href="#people" data-go="people"><i>${K.length*3} 族群</i><b>族群痛點地圖</b><span>各系列對應的族群和痛點，用「人」抓痛點</span></a>
 </div>`}
 
 function knowledge(){
@@ -555,14 +576,131 @@ function myths(){return `<div class="head"><h2>文案常見迷思調整</h2><p>�
 <div class="card"><span class="label good">調整</span><div class="lines"><p>很多人想趕快瘦，但你知道不復胖的秘訣是什麼嗎？</p><p>（介紹補充營養瘦下來跟節食瘦下來的差異）</p><p>你們想要健康瘦下來不復胖，還是快速瘦下來沒多久再重複減一次呢</p></div><div class="ex good"><b>重點：</b>讓顧客知道其中差異，最後自己選擇。</div></div>
 </div>`}
 
-const views={home,knowledge,daily,sales,myths};
+const N="用藥相關請依醫師指示";
+const PP={
+slim:[
+{w:"外食\n上班",n:"外食上班族",tag:"選擇真的很少",life:"三餐都外食，午餐只有一小時，常常隨便買",pain:"大多一起叫外送，或是要速戰速決，選擇真的很少",want:"中午也能吃得安心，下午不會脹脹的，褲子穿起來剛剛好"},
+{w:"婚禮前\n新娘",n:"婚禮前新娘",tag:"想穿上禮服",life:"一邊上班一邊籌備婚禮，試禮服、拍婚紗行程滿檔",pain:"下個月要拍婚紗，拉鍊拉起來好緊張",want:"穿上禮服不用縮小腹，拍照可以自在側身"},
+{w:"小基數\n瘦身",n:"小基數瘦身",tag:"最後幾公斤",life:"體重標準，但小腹、手臂就是有肉",pain:"體重不重，可是穿衣服就是不好看",want:"不用一直遮，夏天可以穿短版上衣和無袖"},
+{w:"產後\n媽媽",n:"產後媽媽",tag:"衣服穿不下",life:"顧小孩、餵奶、睡不飽，自己的飯常常隨便吃",pain:"生完小孩衣服都穿不下了",want:"出門可以穿回以前的衣服，拍照不再躲在後面"},
+{w:"健身\n族群",n:"健身族群",tag:"線條出不來",life:"脂肪很難減、肌肉很難增",pain:"練了好久，線條還是出不來",want:"練的成果穿衣服就看得到"},
+{w:"中年\n肥胖",n:"中年肥胖",tag:"代謝變慢",life:"工作家庭兩頭忙，運動時間越來越少",pain:"年輕時怎麼吃都不胖，現在喝水都會胖",want:"爬樓梯不喘，跟小孩出去玩體力跟得上，健康報告也不要有紅字"},
+{w:"瘦後\n復胖",n:"錯誤方法瘦身後復胖",tag:"瘦了又胖回來",life:"試過節食、斷食、只吃水煮餐，撐不久就放棄",pain:"每次瘦下來沒多久又胖回去，好挫折",want:"不用再重複減肥，吃正常也能維持"},
+{w:"藥物後\n維持",n:"藥物瘦下來後維持",tag:"怕停了會回來",life:"之前靠藥物瘦下來，現在準備或已經停用",pain:"好不容易瘦下來，好怕停了就胖回去",want:"靠自己的飲食習慣穩穩維持，不再擔心數字",note:N}],
+cocoa:[
+{w:"外食\n上班",n:"外食上班族",tag:"沒空吃早餐",life:"早上趕打卡，早餐常跳過或隨便買",pain:"早上根本來不及吃早餐",want:"早餐三分鐘搞定，十點不會餓到想吃零食"},
+{w:"小基數\n瘦身",n:"小基數瘦身",tag:"越吃越少",life:"認為要吃更少才會瘦",pain:"容易開始減少吃東西，造成營養缺乏",want:"好喝又可以補充營養，還可以減少一餐卡路里"},
+{w:"產後\n媽媽",n:"產後媽媽",tag:"吃很少還是瘦不下",life:"早上要出門上班又要用小朋友，自己很趕沒時間吃",pain:"很努力就是瘦不下來，明明吃很少了",want:"趕快瘦回產前的樣子"},
+{w:"健身\n族群",n:"健身族群",tag:"高蛋白很難喝",life:"練完很餓，又不想亂吃",pain:"高蛋白很難喝",want:"高蛋白更好喝，增肌路上不那麼痛苦"},
+{w:"飲控\n族群",n:"飲控族群",tag:"飲控好無聊",life:"每餐都算熱量，吃久了很厭世",pain:"飲控吃到好無聊，好想喝飲料",want:"飲控也有一點小確幸，比較撐得下去"},
+{w:"藥物後\n維持",n:"藥物瘦下來後維持",tag:"怕營養不夠",life:"食量變小，常常一天吃不到幾口",pain:"現在吃很少，又怕營養不夠",want:"吃得少也有營養，氣色看起來好",note:N}],
+purple:[
+{w:"外食\n上班",n:"外食上班族",tag:"暈碳很嚴重",life:"午餐便當、麵食一大份，下午還要開會",pain:"吃完午餐暈碳很嚴重",want:"下午精神好一點，工作不卡關"},
+{w:"血糖\n不穩",n:"血糖不穩",tag:"一餓就很煩躁",life:"三餐不定時，常常餓過頭才吃",pain:"很餓時會一次吃很多，反而不舒服",want:"三餐吃得穩，不會一下很餓一下很撐",note:"有血糖相關狀況請依醫師指示"},
+{w:"腸泌素\n銜接",n:"使用過腸泌素藥物銜接",tag:"怕停了會回來",life:"之前用過腸泌素藥物，正在或準備停用",pain:"停了之後食慾回來，好怕體重跟著回來",want:"停用後也能用飲食習慣穩住",note:N},
+{w:"飲控\n族群",n:"飲控族群",tag:"大餐日好焦慮",life:"平常很認真飲控，聚餐就很有罪惡感",pain:"這週又三場聚餐，好怕前功盡棄",want:"偶爾吃大餐也不用有罪惡感"},
+{w:"容易\n嘴饞",n:"容易嘴饞",tag:"戒不掉手搖",life:"下午三點一定要揪同事訂飲料",pain:"一天沒喝手搖會不開心",want:"減少手搖有替代，還可以戒糖"},
+{w:"容易\n水腫",n:"容易水腫",tag:"整個人很腫",life:"久坐、愛吃重口味，下班鞋子變好緊",pain:"看起來整個人很腫，眼睛也會看起來變小",want:"緊緻，看起來不浮腫"}],
+skin:[
+{w:"社會\n牛馬",n:"社會牛馬",tag:"暗沉蠟黃",life:"天天加班、睡不飽，回家只想躺平",pain:"看起來暗沉蠟黃，氣色很差",want:"就算加班，氣色看起來還是有精神"},
+{w:"媽媽\n族群",n:"媽媽族群",tag:"沒時間保養",life:"小孩睡了才有自己的時間，保養常常跳過",pain:"每天顧小孩，哪有時間擦一堆保養品",want:"一個步驟就保養完，沒化妝出門也有自信"},
+{w:"30+\n族群",n:"30+族群",tag:"不敢關美肌",life:"開始在意細紋和鬆弛，拍照都要修圖",pain:"拍照開始不敢關美肌了",want:"朋友直接拍照也不怕，素顏也有好氣色"},
+{w:"小資\n族群",n:"小資族群",tag:"專櫃買不下手",life:"想好好保養，但預算有限",pain:"專櫃好貴，開架又怕沒感覺",want:"用合理的預算，就能把基礎保養做好"},
+{w:"醫美\n術後",n:"醫美術後",tag:"不知道怎麼保養",life:"花一筆錢做療程，想讓效果維持久一點",pain:"做完醫美不知道後面要擦什麼",want:"術後保養做對，療程的錢花得值得",note:"術後保養請先依醫師指示"},
+{w:"油肌",n:"油肌",tag:"中午就油光",life:"早上上妝，中午臉就泛油、妝也花了",pain:"不擦保濕會更油，擦了又怕悶",want:"清爽又保濕，下午妝容還是乾淨"},
+{w:"乾肌",n:"乾肌",tag:"上妝會卡粉",life:"冬天冷氣房一吹，臉就緊繃",pain:"粉底一擦就浮粉，卡在脫皮的地方",want:"上妝服貼，一整天臉都不緊繃"},
+{w:"敏感肌\n酒糟",n:"敏感肌（酒糟）",tag:"一換保養就泛紅",life:"換季、換保養品就容易泛紅",pain:"每次試新的保養品都好怕過敏",want:"保養品用得安心，不用一直擔心泛紅",note:"酒糟屬於皮膚疾病，請依皮膚科醫師指示"}],
+hair:[
+{w:"產後\n媽媽",n:"產後媽媽",tag:"洗頭掉一堆",life:"顧小孩睡不飽，洗完頭水槽一堆頭髮",pain:"洗頭掉一堆頭髮，看了好焦慮",want:"洗頭時不用再盯著排水孔擔心"},
+{w:"出油\n扁塌",n:"容易出油扁塌",tag:"下午就扁了",life:"早上洗頭，下午還要見客戶",pain:"早上洗的頭，下午就扁了",want:"一整天頭髮都蓬鬆，見客戶也有自信"},
+{w:"頭皮\n敏感",n:"頭皮敏感",tag:"頭皮屑很多",life:"換洗髮精就怕頭皮不舒服",pain:"明明有洗頭，頭皮屑還是很多，甚至會很癢，在外面這樣很困擾",want:"頭皮健康，不會有尷尬問題"},
+{w:"壓力\n掉髮",n:"壓力掉髮",tag:"馬尾變細了",life:"工作壓力大、常熬夜",pain:"最近綁頭髮，覺得馬尾變細了",want:"綁馬尾不用擔心，拍照不用再遮髮線"},
+{w:"髮質\n受損",n:"髮質受損",tag:"頭髮像稻草",life:"常漂染、燙髮，每天吹整",pain:"漂完頭髮整個毛躁",want:"吹完頭髮柔順有光澤，不用綁起來才敢出門"}],
+probiotic:[
+{w:"腸胃\n敏感",n:"腸胃道敏感",tag:"吃了就找廁所",life:"很多東西不能吃，或是吃了就要找廁所",pain:"出門很困擾，太辣、海鮮都會不舒服，要找廁所很麻煩",want:"重要的日子不用先找廁所在哪裡"},
+{w:"免疫力\n差",n:"免疫力差",tag:"換季就中標",life:"換季、辦公室有人感冒就很容易被傳染",pain:"辦公室一有人感冒，下一個就是我",want:"不要一換季就感冒"},
+{w:"小孩",n:"小孩",tag:"過敏好心疼",life:"過敏體質，上學容易被傳染",pain:"媽媽看小朋友過敏很心疼",want:"換季不會一直流鼻涕、眼睛癢"},
+{w:"異位性\n皮膚炎",n:"異位性皮膚炎",tag:"換季就很癢",life:"換季、流汗就很難受，晚上睡不好",pain:"一到換季就好怕又發作",want:"晚上能好好睡，穿短袖也有自信",note:"屬於皮膚疾病，請依醫師指示治療"},
+{w:"身體\n發炎",n:"身體發炎",tag:"常常不舒服",life:"作息亂，愛吃炸的和甜的",pain:"身體常常這裡不舒服、那裡不舒服",want:"作息和飲食調整好，每天起床有精神",note:"有不適症狀請先就醫"},
+{w:"消化差",n:"消化差",tag:"吃完脹脹的",life:"吃飯很快，常吃很油",pain:"每次吃完肚子都脹脹的",want:"吃完飯輕鬆，不用一直鬆褲頭"},
+{w:"長輩",n:"長輩",tag:"上廁所不規律",life:"活動量變少，水喝不多",pain:"爸媽常說好幾天沒上廁所",want:"爸媽每天順順的，出門玩也安心"}],
+lutein:[
+{w:"小孩",n:"小孩",tag:"一直滑平板",life:"上課用平板，回家又看卡通",pain:"小孩一天看平板好久，好擔心",want:"小孩看螢幕的同時，營養也有補到"},
+{w:"長輩",n:"長輩",tag:"手機拿很遠看",life:"退休後很愛滑手機、看影片",pain:"爸媽現在比我還愛滑手機",want:"爸媽滑手機、看報紙都輕鬆"},
+{w:"孕期",n:"孕期",tag:"想補怕亂補",life:"懷孕後很在意吃進去的每一樣東西",pain:"懷孕了，不知道哪些可以補",want:"補得安心，寶寶需要的營養也顧到",note:"孕期補充請先問醫師"},
+{w:"重度\n用眼",n:"重度用眼工作者",tag:"眼睛好累",life:"設計、工程師、會計，一天盯螢幕十小時",pain:"盯螢幕一整天，下班眼睛好累",want:"下班還有力氣追劇，眼睛不會一直想閉起來"},
+{w:"眼睛\n乾澀",n:"眼睛容易乾澀",tag:"一直眨眼",life:"整天待冷氣房、戴隱形眼鏡",pain:"眼睛乾到一直眨",want:"戴隱形眼鏡一整天也舒服",note:"症狀明顯請先看眼科"}],
+bone:[
+{w:"健身\n族群",n:"健身族群",tag:"練完關節卡卡",life:"重訓、跑步，一週練好幾天",pain:"深蹲加重量，膝蓋開始卡卡的",want:"練得久、練得穩，不用因為不舒服停練"},
+{w:"長輩",n:"長輩",tag:"蹲下站起吃力",life:"活動量變少，走一段就想休息",pain:"爸媽蹲下去要站起來很吃力",want:"爸媽可以自己逛市場、出去走走"},
+{w:"骨刺\n受損",n:"骨刺受損",tag:"治療後不會顧",life:"久站久走就不舒服，已經在看醫生",pain:"做完治療以後，不知道怎麼照顧",want:"讓治療後的效果可以更持久",note:"骨刺請依醫師治療，營養補充只是日常保養"},
+{w:"孕期",n:"孕期",tag:"半夜抽筋",life:"懷孕後很在意鈣有沒有吃夠",pain:"肚子大已經很難睡了，半夜抽筋更難睡",want:"自己和寶寶的營養都顧到",note:"孕期補充請先問醫師"}],
+alcohol:[
+{w:"業務\n應酬",n:"業務應酬",tag:"隔天好累",life:"一週好幾攤應酬，隔天還要早起",pain:"應酬完隔天上班整個人很累",want:"隔天開會照樣有精神"},
+{w:"熬夜\n顧肝",n:"熬夜顧肝",tag:"熬夜好累",life:"常加班熬夜，作息不正常",pain:"熬夜完隔天好累，好擔心身體",want:"作息再忙也有補充，白天比較有精神",note:"有肝臟相關狀況請依醫師指示"},
+{w:"活動\n聚會",n:"活動聚會",tag:"想喝怕不舒服",life:"尾牙、婚宴、朋友聚會一攤接一攤",pain:"喜歡跟朋友喝一點，但隔天不想不舒服",want:"聚會玩得開心，隔天也能照常安排"}],
+tea:[
+{w:"講話多",n:"工作講話多",tag:"喉嚨乾乾",life:"老師、客服、業務，一天講不停",pain:"上班講了一整天的話，下班喉嚨都乾乾的",want:"下班還有力氣跟家人聊天"},
+{w:"久咳",n:"久咳",tag:"喉嚨卡卡",life:"換季喉嚨就卡卡的，一直清喉嚨",pain:"咳了好久一直沒好，好困擾",want:"配合醫生治療，平常有一杯溫的照顧自己",note:"久咳請先就醫，咳超過三週一定要看醫生"},
+{w:"老\n煙槍",n:"老煙槍",tag:"早上喉嚨卡",life:"抽菸好幾年，早上起床喉嚨卡卡",pain:"早上起床喉嚨都卡卡的",want:"慢慢減菸，平常有一杯溫的可以喝"}]
+};
+const OLD=[{w:"很多\n專利"},{w:"300多座\n得獎"},{w:"純淨\n標章"},{w:"上過\n節目"}];
+const HOW=[
+{w:"痛點",tag:"他卡在哪裡"},
+{w:"想成為\n的樣子",tag:"改變後的情境"},
+{w:"生活\n型態",tag:"每天怎麼過"},
+{w:"相同的\n舉例",tag:"我以前也這樣"}
+];
+let pp="slim", gsel=-1;
+function radial(center,nodes,sel,cls){
+  const n=nodes.length,many=n>5,C=240,CY=220,R1=many?142:118,NR=many?42:47;
+  const pos=(r,i)=>{const a=(-90+360*i/n)*Math.PI/180;return [C+r*Math.cos(a),CY+r*Math.sin(a)]};
+  const tx=(x,y,s,c)=>{const L=s.split("\n"),h=c==="r-ct"?28:20;return `<text class="${c}" x="${x}" y="${y-(L.length-1)*h/2}" text-anchor="middle" dominant-baseline="central">${L.map((l,k)=>`<tspan x="${x}" dy="${k?h:0}">${esc(l)}</tspan>`).join("")}</text>`};
+  let g="";
+  [1,1.62].forEach(k=>g+=`<circle class="r-ring" cx="${C}" cy="${CY}" r="${R1*k*.62}"/>`);
+  nodes.forEach((d,i)=>{const [x1,y1]=pos(R1,i);g+=`<line class="r-ln" x1="${C}" y1="${CY}" x2="${x1}" y2="${y1}"/>`});
+  if(!many) nodes.forEach((d,i)=>{if(!d.tag)return;const [x1,y1]=pos(R1,i),up=y1<CY-10,y2=up?y1-NR-21:y1+NR+21;
+    g+=`<line class="r-ln" x1="${x1}" y1="${y1}" x2="${x1}" y2="${y2}"/>`;const w=d.tag.length*15.5+26;
+    g+=`<g class="r-out${i===sel?" on":""}"><rect x="${x1-w/2}" y="${y2-17}" width="${w}" height="34" rx="17"/>${tx(x1,y2,d.tag,"r-ot")}</g>`});
+  nodes.forEach((d,i)=>{const [x1,y1]=pos(R1,i);
+    g+=`<g class="r-node${i===sel?" on":""}" ${sel!==undefined?`data-gi="${i}" role="button" tabindex="0" aria-label="${esc(d.n||d.w)}"`:""}><circle cx="${x1}" cy="${y1}" r="${NR}"/>${tx(x1,y1,d.w,"r-nt")}</g>`});
+  g+=`<circle class="r-ctr" cx="${C}" cy="${CY}" r="56"/>${tx(C,CY,center,"r-ct")}`;
+  return `<svg class="rad ${cls||""}" viewBox="0 0 480 440" role="img" aria-label="${esc(center.replace("\n",""))}：${nodes.map(d=>(d.n||d.w).replace("\n","")).join("、")}">${g}</svg>`;
+}
+function people(){
+  const k=K.find(x=>x.id===pp), gs=PP[pp];
+  return `<div class="head"><h2>族群痛點地圖</h2><p>以往用產品做出發，現在改成用「人」做出發。先想他是誰、過著什麼樣的生活，再接上產品。</p></div>
+<h2 class="sec" style="margin-top:6px">從產品出發 → 從人出發</h2><p class="sub">同樣是介紹，中心換一個，觀眾的感受就不一樣</p>
+<div class="two">
+<div class="card"><span class="label">以往：產品放射</span>${radial("產品",OLD,undefined,"dim")}<p class="cap">觀眾心裡想：所以呢？跟我有什麼關係？</p></div>
+<div class="card"><span class="label good">現在：人放射</span>${radial("人",HOW)}<p class="cap">觀眾心裡想：這說的就是我！</p></div>
+</div>
+<h2 class="sec">用「人」抓痛點四步驟</h2><p class="sub">以「剛生完小孩的上班族媽媽」為例</p>
+<div class="list">
+<article class="card"><h3><span class="num">1</span>選一個人</h3><p>不要寫給「所有人」，想一個具體的人，例如「剛生完小孩的上班族媽媽」。</p></article>
+<article class="card"><h3><span class="num">2</span>生活型態</h3><div class="ex" style="margin-top:0"><p>每天帶小孩又要上班，很累很趕，壓力大很難瘦身。</p></div></article>
+<article class="card"><h3><span class="num">3</span>相同的舉例</h3><div class="ex" style="margin-top:0"><p>我以前（我朋友）也是這樣，所以她才選水光，因為不用擦一堆保養，省更多時間，不然常常忘記，皮膚就越來越糟。</p></div></article>
+<article class="card"><h3><span class="num">4</span>想成為的樣子</h3><div class="ex good" style="margin-top:0"><span class="label good">改變後情境</span><p>看起來不那麼憔悴，以後就算沒化妝也不會顯老。</p></div></article>
+</div>
+<h2 class="sec">各系列對應族群</h2><p class="sub">中心是產品，往外是會買它的人。點族群看他的生活型態、痛點和想成為的樣子。</p>
+<div class="rings">${K.map(x=>`<button class="ring" type="button" data-pp="${x.id}" aria-pressed="${x.id===pp}"><b>${G[x.id]}</b>${x.n}</button>`).join("")}</div>
+<div class="card">${radial(k.n.length>3?k.n.slice(0,2)+"\n"+k.n.slice(2):k.n,gs,gsel)}</div>
+<div class="tip" style="margin-top:16px"><span class="label">💡 相同的舉例</span><p>每個族群都配一個「我以前（我朋友）也是這樣」的真實故事，觀眾會更有共鳴。</p></div>
+<div class="list" style="margin-top:16px">${gs.map((g,i)=>`<article class="card${i===gsel?" sel":""}" id="g${i}"><h3><span class="num">${i+1}</span>${esc(g.n)}<span class="new">${esc(g.tag)}</span></h3>
+<div class="ex" style="margin-top:4px"><span class="label">生活型態</span><p>${esc(g.life)}</p></div>
+<div class="ex"><span class="label">痛點：他會說</span><p>「${esc(g.pain)}」</p></div>
+<div class="ex good"><span class="label good">想成為的樣子</span><p>${esc(g.want)}</p></div>
+${g.note?`<p class="note">⚠️ ${esc(g.note)}</p>`:""}</article>`).join("")}</div>`;
+}
+
+const views={home,knowledge,daily,sales,myths,people};
 function show(v,keep){
   if(!views[v]) v="home";
   clips=[]; cur=v; document.body.dataset.view=v; app.innerHTML=views[v]();
   document.querySelectorAll(".tabs a").forEach(a=>a.dataset.go===v?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current"));
   if(!keep) scrollTo(0,0);
 }
-function route(){const h=location.hash.slice(1);const k=K.find(x=>"knowledge-"+x.id===h);if(k){product=k.id;show("knowledge")}else show(h||"home")}
+function route(){const h=location.hash.slice(1);const k=K.find(x=>"knowledge-"+x.id===h);const q=K.find(x=>"people-"+x.id===h);if(q){pp=q.id;gsel=-1;show("people")}else if(k){product=k.id;show("knowledge")}else show(h||"home")}
 
 const dlg=document.getElementById("practice");
 function say(){
@@ -580,6 +718,10 @@ document.getElementById("pNext").onclick=()=>{if(at<deck.length-1){at++;say()}el
 document.addEventListener("click",async e=>{
   const go=e.target.closest("[data-go]");
   if(go){e.preventDefault();const v=go.dataset.go;try{history.replaceState(null,"","#"+v)}catch(_){}show(v);return}
+  const q=e.target.closest("[data-pp]");
+  if(q){pp=q.dataset.pp;gsel=-1;try{history.replaceState(null,"","#people-"+pp)}catch(_){}show("people",true);return}
+  const gi=e.target.closest("[data-gi]");
+  if(gi){gsel=+gi.dataset.gi;show("people",true);const el=document.getElementById("g"+gsel);if(el)el.scrollIntoView({block:"center",behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});return}
   const p=e.target.closest("[data-p]");
   if(p){product=p.dataset.p;try{history.replaceState(null,"","#knowledge-"+product)}catch(_){}show("knowledge",cur==="knowledge");return}
   const s=e.target.closest("[data-say]");
@@ -588,6 +730,7 @@ document.addEventListener("click",async e=>{
   if(c){try{await navigator.clipboard.writeText(clips[+c.dataset.copy]);c.textContent="已複製"}catch(_){c.textContent="請長按文字複製"}setTimeout(()=>c.textContent="複製文案",1600)}
 });
 addEventListener("hashchange",route);
+document.addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.matches&&e.target.matches("[data-gi]")){e.preventDefault();e.target.dispatchEvent(new MouseEvent("click",{bubbles:true}))}});
 route();
 </script>
 </body>
